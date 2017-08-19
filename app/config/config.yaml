@@ -1,0 +1,23 @@
+databases:
+  advancement: "data/brokenhungry.sqlite"
+  
+# For every table in the database, add an item here
+models:
+  mainDB:
+    - User
+    - Vegetables
+    - Dairy
+    - Protein
+    - Grains
+    - Fruits
+    - Form
+    - Groceries
+    - Preferences
+    
+    
+paths:
+  files: 'app/static/files'
+  
+user:
+  USER
+  tmp: 'nelsonk'
