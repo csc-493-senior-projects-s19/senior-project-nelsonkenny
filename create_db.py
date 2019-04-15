@@ -1,52 +1,84 @@
-# WARNING: NOT FOR USE IN PRODUCTION AFTER REAL DATA EXISTS!!!!!!!!!!!!!!!!!!!!!!
-'''
-This script creates the database tables in the SQLite file. 
-Update this file as you update your database.
-'''
-import os, sys
-import importlib
+from app.models.util import *
+# from app.models.User import *
+# from app.models.Form import *
+# from app.models.Offer import *
+# from app.models.OfferPassenger import *
+# from app.models.Request import *
+# from app.models.Rider import *
+# from app.models. import *
 
-# Don't forget to import your own models!
-from app.models import *
-from app.config.loadConfig import *
-conf = load_config('app/config/config.yaml')
 
-sqlite_dbs  = [ conf['databases']['brokenhungry']
-                # add more here if multiple DBs
-              ]
+DB = getDB()
 
-# Remove DBs
-for fname in sqlite_dbs:
-  try:
-    os.remove(fname)
-    print ("Removing {0}.".format(fname))
-  except OSError:
-    print OSError
-    pass
+class baseModel(Model):
+  class Meta:
+    database = DB
 
-# Creates DBs
-for fname in sqlite_dbs:
-  if os.path.isfile(fname):
-    print ("Database {0} should not exist at this point!".format(fname))
-  print ("Creating empty SQLite file: {0}.".format(fname))
-  open(fname, 'a').close()
-  
-
-def class_from_name (module_name, class_name):
-  # load the module, will raise ImportError if module cannot be loaded
-  # m = __import__(module_name, globals(), locals(), class_name)
-  # get the class, will raise AttributeError if class cannot be found
-  c = getattr(module_name, class_name)
-  return c
     
-"""This file creates the database and fills it with some dummy run it after you have made changes to the models pages."""
-def get_classes (db):
-  classes = []
-  for str in conf['models'][db]:
-    print ("\tCreating model for '{0}'".format(str))
-    c = class_from_name(sys.modules[__name__], str)
-    classes.append(c)
-  return classes
+class Form(baseModel):
+    FID         = PrimaryKeyField()
+    destination = CharField(max_length = 200)
+    origin      = CharField(max_length = 200)
+    date        = CharField()
+    time        = CharField()
+    notes       = CharField(max_length = 1000)
+    
+class User(baseModel):
+    UID      = PrimaryKeyField()
+    username = CharField(max_length = 200)
+    firstName = CharField(max_length=100)
+    lastName = CharField(max_length=100)
+    phone    = CharField(max_length=11)
+    email    = CharField(max_length=100)
+    password = CharField(max_length=100)
 
-  
-mainDB.create_tables(get_classes('mainDB'), safe=True)
+class Rider(baseModel):
+    RID  = PrimaryKeyField()
+    user = ForeignKeyField(User, null = False)
+
+class Driver(baseModel):
+    DID = PrimaryKeyField()
+    user = ForeignKeyField(User, null = False)    
+
+
+class Offer(baseModel):
+    OID           = PrimaryKeyField()
+    driver        = ForeignKeyField(Driver, null = False)
+    form        = ForeignKeyField(Form, null = False)
+    num_passenger = IntegerField(null = False)
+
+class OfferPassenger(baseModel):
+    OPID  = PrimaryKeyField()
+    offer   = ForeignKeyField(Offer, null = False)
+    passenger = ForeignKeyField(Rider, null = False)
+    
+class Request(baseModel):
+    REID   = PrimaryKeyField()
+    driver = ForeignKeyField(Driver, null = True, related_name ='request_rider')
+    rider  = ForeignKeyField(Rider, null = False, related_name = 'request_driver')
+    form   = ForeignKeyField(Form, null = False)
+    status = BooleanField()
+
+class Announcement(baseModel):
+    AID     = PrimaryKeyField()
+    author  = ForeignKeyField(User, null = True, related_name ='author')
+    date    = CharField()
+    time    = CharField()
+    content = CharField()
+    
+class Message(baseModel):
+    MID      = PrimaryKeyField()
+    sender   = ForeignKeyField(User, null = False, related_name ='message_sender')
+    receiver = ForeignKeyField(User, null = True, related_name = 'message_receiver')
+    content  = CharField()
+    date     = CharField()
+    time     = CharField()    
+
+DB.create_tables([Form, Offer, OfferPassenger, Request, User, Rider, Driver, Announcement, Message])
+
+
+
+
+
+
+

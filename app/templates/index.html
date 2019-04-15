@@ -1,0 +1,104 @@
+{% extends "base.html" %} 
+{% block content %}
+
+    <section class="home-slider owl-carousel">
+
+      <div class="slider-item" style="background-image: url(static/images/driving.png);filter:brightness(75%);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-8 col-sm-12 text-center ftco-animate">
+         
+              <h1 class="mb-4">Need a ride?</h1>
+              <p class="mb-4 mb-md-5">One of your peers will get you there!</p>
+              <p><a href="/request" class="btn btn-primary p-3 px-xl-4 py-xl-3">Request a Ride</a> <a href="/offer" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Fulfill a Ride Request</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+     <div class="slider-item" style="background-image: url(static/images/driving_1.jpg);filter:brightness(75%);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-8 col-sm-12 text-center ftco-animate">
+            	
+              <h1 class="mb-4">Going home for the holidays?</h1>
+              <p class="mb-4 mb-md-5">How about you ride with some friends?</p>
+              <p><a href="/request" class="btn btn-primary p-3 px-xl-4 py-xl-3">Request a Ride</a> <a href="/offer" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Fulfill a Ride Request</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-item" style="background-image: url(static/images/driving_2.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-8 col-sm-12 text-center ftco-animate">
+            	
+              <h1 class="mb-4">Let's get you there.</h1>
+              <p class="mb-4 mb-md-5">Your day belongs to you.</p>
+              <p><a href="/request" class="btn btn-primary p-3 px-xl-4 py-xl-3">Request a Ride</a> <a href="/offer" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Fulfill a Ride Request</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+		<section class="ftco-counter ftco-bg-dark img" id="section-counter">
+			<div class="overlay"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+        	<div class="col-md-10">
+        		<div class="row">
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-choices"></span></div>
+		              	<strong class="number" data-number="{{request_count}}">{{request_count}}</strong>
+		              	<span style = "text-transform: uppercase; font-family: 'Josefin Slab', serif;">Ride Requests</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="icon-car"></span></div>
+		              	<strong class="number" data-number="{{rider_count}}">{{rider_count}}</strong>
+		              	<span style = "text-transform: uppercase; font-family: 'Josefin Slab', serif;">Riders</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-choices"></span></div>
+		              	<strong class="number" data-number="5">0</strong>
+		              	<span style = "text-transform: uppercase; font-family: 'Josefin Slab', serif;">Ride Offers</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="icon-car"></span></div>
+		              	<strong class="number" data-number="{{driver_count}}">{{driver_count}}</strong>
+		              	<span style = "text-transform: uppercase; font-family: 'Josefin Slab', serif;">Drivers</span>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

@@ -1,11 +1,9 @@
 from app.models.util import *
-from app.models.User import *
-from app.models.Preferences import*
 
-class Form(Model):
-    FID = PrimaryKeyField()
-    user = ForeignKeyField(User)
-    money = IntegerField()
-    duration = IntegerField(null = True)
-    preference = ForeignKeyField(Preferences)
-    
+class Form(baseModel):
+    FID         = PrimaryKeyField()
+    destination = CharField(max_length = 200)
+    origin      = CharField(max_length = 200)
+    date        = CharField()
+    time        = CharField()
+    notes       = CharField(max_length = 1000)

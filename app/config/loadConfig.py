@@ -18,7 +18,3 @@ def get_cfg():
     cfg             = load_config(config_abs_path)
     return cfg
     
-def get_secret_cfg():
-    secret_abs_path = getAbsolutePath('app/config','secret.yaml')
-    secret_cfg      = load_config(secret_abs_path)
-    return secret_cfg

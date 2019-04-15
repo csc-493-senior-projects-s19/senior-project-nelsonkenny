@@ -1,0 +1,63 @@
+{% extends "base.html" %} 
+{% block content %}
+    <br>
+   
+	<section class="ftco-appointment" >
+		<div class="overlay"></div>
+	<div class="container-wrap">
+		<div class="row no-gutters d-md-flex align-items-center">
+
+    		<div class="col-md-6 appointment ftco-animate" style = "margin:auto;">
+    			<h3 class="mb-3" style ='text-align:center;'>Request a Ride:</h3>
+    		
+    			<form action="/request/submit" class="appointment-form" method = "POST">
+    			
+    				<div class="d-md-flex">
+	                     <div class="form-group">
+	    					<input type="text" id = "origin" name = "origin" class="form-control" placeholder="Origin">
+	    				</div>
+	    				<div class="form-group ml-md-4">
+	    					<input type="text" id = "destination" name = "destination" class="form-control" placeholder="Destination">
+	    				</div>
+		    		</div>
+    				<div class="d-md-flex">
+	    				<div class="form-group">
+	    					<div class="input-wrap">
+	            		<div class="icon"><span class="ion-md-calendar"></span></div>
+	            		<input type="text" id = "date"  name ="date" class="form-control appointment_date" placeholder="Date">
+            		</div>
+	    				</div>
+	    				<div class="form-group ml-md-4">
+	    					<div class="input-wrap">
+	            		<div class="icon"><span class="ion-ios-clock"></span></div>
+	            		<input type="text" id = "time" name = "time" class="form-control appointment_time" placeholder="Time">
+            		</div>
+	    				</div>
+	    				<div class="form-group ml-md-4">
+	    					<input type="text" id = "phone" name = "phone" class="form-control" placeholder="Phone">
+	    					
+	    				</div>
+	                     <div class="form-group ml-md-4">
+	    					<input type="text" id = "email" name = "email" class="form-control" placeholder="Email">
+	    					
+	    				</div> 
+	    				
+    				</div>
+    				
+    				<div class="d-md-flex">
+    					<div class="form-group">
+	              <textarea name="notes" id="notes" cols="30" rows="2" class="form-control" placeholder="Additional Information"></textarea>
+	              	
+	            </div>
+	           
+	            <div class="form-group ml-md-4">
+
+	              <input type="submit" value="Submit" class="btn btn-primary py-3 px-4">
+	            </div>
+    				</div>
+    			</form>
+    		</div>    			
+		</div>
+	</div>
+</section>
+{% endblock %}
