@@ -15,28 +15,15 @@
           </tr>
           </thead>
           <tbody>
-              <tr>
-              
-              <td>H</td> 
-              <td>E</td>
-              <td>L</td> 
-             
-              <td>O</td> 
-              <td><a  class="btn btn-primary p-3 px-xl-4 py-xl-3"  href = "/respondAnnouncement">Respond to Announcement!</a></td>
-              </tr>
-           {# {% for request in my_offers %} 
+           {% for announcement in announcements %} 
             <tr>
-              <td>{{request.rider.user.firstName}} {{request.rider.user.lastName}}</td>
-              <td>{{request.form.origin}}</td> 
-              <td>{{request.form.destination}}</td>
-              <td>{{request.form.date}}</td>
-              <td>{{request.form.time}}</td> 
-              <td>{{request.form.notes}}</td>
-             
-              
-            
+              <td>{{announcement.author.firstName}} {{announcement.author.lastName}}</td>
+              <td>{{announcement.date}}</td> 
+              <td>{{announcement.time}}</td>
+              <td>{{announcement.content}}</td>
+              <td><a class="btn btn-primary p-3 px-xl-4 py-xl-3"  href = "/respondAnnouncement/{{announcement.author.UID}}">Respond to Announcement!</a></td>
             </tr>
-            {% endfor %} #}
+            {% endfor %} 
           </tbody>
         </table>	
         </div>
