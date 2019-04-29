@@ -10,6 +10,7 @@ def offerRides():
 def acceptRequest(reid):
     request = Request.get(Request.REID == int(reid))
     request.driver = 2
+    request.status = 1
     request.save()
     return redirect(url_for("offerRides"))
   

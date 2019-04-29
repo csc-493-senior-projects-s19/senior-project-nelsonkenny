@@ -17,10 +17,8 @@ def requestSubmit():
     
     rider = Rider.get(Rider.user == user.UID)
     rider_id = rider.RID
-    print(rider_id)
- 
-    
-    ride_request = Request(rider = rider_id , form = form)
+
+    ride_request = Request(rider = rider_id , form = form, status = 0)
     ride_request.save()
     
     flash("Your ride request was successfully submitted!")
@@ -32,9 +30,7 @@ def viewMyRequests():
     rider = Rider.get(Rider.user == user.UID)
     rider_id = rider.RID
     my_requests = Request.select().where(Request.rider == rider_id ).distinct()
-    print(my_requests)
-    for i in my_requests:
-        print(i.REID)
+   
     return render_template("myRideRequests.html", my_requests = my_requests)
 
 @app.route("/view/myrideoffers", methods=['GET'])

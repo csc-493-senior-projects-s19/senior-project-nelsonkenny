@@ -1,11 +1,12 @@
-from app.allImports import *
+''' This controller oversees user actions related to the messaging feature.'''
+from app.allImports import * # Imports flask and libraries needed 
 
-
-     
 @app.route("/messages", methods=["GET"])
 def getMessages():
-    user = User.get(User.username =='nelsonk')
-    messages = Message.select().where(Message.sender == user.UID)
+    
+    user = User.get(User.username =='nelsonk') # user is meant to be the logged in user
+    
+    messages = Message.select().where(Message.sender == user.UID) # select all the messages that the logged in user has either sent or received
     
     return render_template('messages.html', messages = messages)
     
@@ -13,9 +14,7 @@ def getMessages():
 
 @app.route("/writeMessage/<REID>", methods=["GET","POST"])
 def writeMessages(REID):
-    data = request.form 
-    
-    
+    ''' This function directs the user to the interface they need to write a new '''
     return render_template('writeMessage.html', REID)
     
 @app.route("/respondMessage/<receiver>/<sender>", methods=["GET","POST"])
@@ -99,8 +98,8 @@ def sendMessageDriver(REID):
     
     content = data['content']
     
-    message = Message(sender = driver.user, receiver = rider.user, content = content, date = date, time = time)
+    message = Message(sender = rider.user, receiver = driver.user, content = content, date = date, time = time)
     
     message.save()
     
-    return redirect(url_for('viewMyOffers'))
+    return redirect(url_for('viewMyRequests'))

@@ -16,7 +16,7 @@ from app.models import *
 import pprint
 import sys
 import datetime
-# cfg = get_cfg()
+cfg = get_cfg()
 
 app = Flask(__name__)
 app.secret_key = 'QWEasdzxc!'

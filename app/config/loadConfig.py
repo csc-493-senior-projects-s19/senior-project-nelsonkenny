@@ -1,12 +1,8 @@
-'''
-This script loads the yaml file, which holds all 
-configuration information.
+'''This script loads the yaml file, which holds all configuration information not saved in the database.
 '''
 from app.logic.absolute_path import *
 import yaml, os
 import logging
-
-
 
 def load_config(file):
     with open(file, 'r') as ymlfile:

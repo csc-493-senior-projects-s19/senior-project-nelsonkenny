@@ -76,7 +76,9 @@ class Message(baseModel):
 
 DB.create_tables([Form, Offer, OfferPassenger, Request, User, Rider, Driver, Announcement, Message])
 
-
+# migrate(
+#     migrator.add_column("rooms", "lastModified", CharField(null = True))
+#     )
 
 
 

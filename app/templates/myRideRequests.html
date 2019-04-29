@@ -25,8 +25,15 @@
               <td>{{request.form.date}}</td>
               <td>{{request.form.time}}</td> 
               <td>{{request.form.notes}}</td>
-              <td>Assigned a driver</td>
-              <td><a  class="btn btn-primary p-3 px-xl-4 py-xl-3"  href = "/messageDriver/{{request.REID}}">Message the driver!</a></td>
+              {% if request.status == 0 %}
+                <td>No driver assigned yet!</td>
+                <td></td>
+                <!--<td><a  class="btn btn-primary p-3 px-xl-4 py-xl-3"  href = "/messageDriver/{{request.REID}}">Message the driver!</a></td>-->
+              {% elif request.status == 1%}
+               <td>{{request.driver.user.firstName}} {{request.driver.user.lastName}} offered to help.</td>
+               <td><a  class="btn btn-primary p-3 px-xl-4 py-xl-3"  href = "/messageDriver/{{request.REID}}">Message the driver!</a></td>
+              {% endif %}
+              
             
             </tr>
             {% endfor %} 
