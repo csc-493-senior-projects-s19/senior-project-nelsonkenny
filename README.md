@@ -47,4 +47,27 @@ The only remaining step to getting your development environment deployed is runn
 
 ![run.PNG](https://bitbucket.org/repo/bEXb4L/images/1543001500-run.PNG)
 
-The URL will take you to the application and allow you to see any changes you make to the system. That's all that has to be done in order to get the development environment created and ready for editing.
+The URL will take you to the application and allow you to see any changes you make to the system. 
+That's all that has to be done in order to get the development environment created and ready for editing.
+
+iRide is built on an MVC model. As a result, all user interface code is in the templates 
+folder while all the database related code is in the models folder and the python code for 
+data retrieval and processing is in the controllers folder. 
+
+# These are the controllers that process of the user actions in the application. 
+from app.controllers.offerRides import *
+from app.controllers.requestRides import *
+from app.controllers.main import *
+from app.controllers.message import *
+from app.controllers.announcement import *
+
+# These are the database tables that store data for the application
+from app.models.Form import *
+from app.models.Request import *
+from app.models.OfferPassenger import * 
+from app.models.Offer import *
+from app.models.User import *
+from app.models.Driver import *
+from app.models.Rider import *
+from app.models.Announcement import *
+from app.models.Message import *
